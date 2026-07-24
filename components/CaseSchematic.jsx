@@ -192,16 +192,24 @@ const DIAGRAMS = {
   pikoos: {
     viewBox: "0 0 560 280",
     circles: [],
-    boxes: [[330, 96, 150, 88, 10]],
-    edges: ["M160 140 C 220 140, 260 140, 328 140"],
+    boxes: [
+      [40, 34, 480, 180, 12],   // screen
+      [78, 70, 156, 92, 6],     // window A
+      [250, 96, 168, 84, 6],    // window B
+    ],
+    edges: [],
     decor: [
-      "M96 140 C 100 118, 106 112, 128 108 C 106 104, 100 98, 96 76 C 92 98, 86 104, 64 108 C 86 112, 92 118, 96 140 Z", // idea spark
-      "M354 122 L 456 122 M354 140 L 436 140 M354 158 L 448 158",
+      "M78 90 L 234 90",                                        // window A titlebar
+      "M96 116 L 214 116 M96 132 L 196 132 M96 148 L 206 148",  // A content
+      "M250 116 L 418 116",                                     // window B titlebar
+      "M268 138 L 400 138 M268 154 L 372 154",                  // B content
+      "M40 186 L 520 186",                                      // taskbar divider
+      "M58 194 h20 v14 h-20 Z M86 194 h20 v14 h-20 Z M114 194 h20 v14 h-20 Z", // taskbar apps
+      "M482 194 h24 v14 h-24 Z",                                // clock corner
     ],
     labels: [
-      [72, 178, "IDEA"],
-      [346, 210, "WORKING MVP"],
-      [210, 122, "DAYS, NOT MONTHS"],
+      [44, 246, "DESKTOP ENVIRONMENT"],
+      [372, 246, "PERSISTENT · LOCAL-FIRST"],
     ],
   },
 };
