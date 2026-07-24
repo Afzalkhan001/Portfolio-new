@@ -29,13 +29,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://afzalai.netlify.app"),
   title: "Afzal Khan — AI Engineer",
   description:
     "AI Engineer, AI Automation Engineer, and Full Stack AI Developer. I build AI-powered products that solve real-world business problems — LLM applications, agents, automation systems, and modern full-stack development.",
+  alternates: {
+    canonical: "https://afzalai.netlify.app",
+  },
   openGraph: {
     title: "Afzal Khan — AI Engineer",
     description:
       "AI-powered products that solve real business problems: LLM apps, agents, automation, full-stack AI development.",
+    url: "https://afzalai.netlify.app",
+    siteName: "Afzal Khan — AI Engineer",
     type: "website",
   },
 };

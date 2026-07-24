@@ -2,7 +2,7 @@ import Link from "next/link";
 import Hero from "@/components/Hero";
 import Reveal, { OverflowReveal } from "@/components/Reveal";
 import { NodeMark } from "@/components/Schematic";
-import { featuredProjects, experience, services } from "@/lib/data";
+import { featuredProjects, experience, services, primaryLive } from "@/lib/data";
 
 export default function Home() {
   return (
@@ -24,27 +24,44 @@ export default function Home() {
         </div>
 
         <div className="border-t rule">
-          {featuredProjects.map((p, i) => (
-            <Reveal key={p.slug} delay={i * 0.05} y={20}>
-              <Link
-                href={`/work/${p.slug}`}
-                className="group grid grid-cols-[48px_1fr_auto] items-baseline gap-4 border-b rule py-6 transition-colors duration-300 hover:bg-paper-2 sm:grid-cols-[64px_1fr_auto_90px_auto] sm:gap-8 sm:px-3"
-              >
-                <span className="t-mono text-dim">{p.n}</span>
-                <span className="t-h3 transition-transform duration-500 group-hover:translate-x-2">
-                  {p.name}
-                  <span className="ml-3 hidden text-[14px] font-normal text-dim lg:inline">
-                    {p.tagline}
+          {featuredProjects.map((p, i) => {
+            const live = primaryLive(p);
+            return (
+              <Reveal key={p.slug} delay={i * 0.05} y={20}>
+                <div className="group relative grid grid-cols-[48px_1fr_auto] items-baseline gap-4 border-b rule py-6 transition-colors duration-300 hover:bg-paper-2 sm:grid-cols-[64px_1fr_auto_auto_auto] sm:gap-8 sm:px-3">
+                  <Link
+                    href={`/work/${p.slug}`}
+                    aria-label={`${p.name} — case study`}
+                    className="absolute inset-0 z-0"
+                  />
+                  <span className="t-mono text-dim">{p.n}</span>
+                  <span className="t-h3 transition-transform duration-500 group-hover:translate-x-2">
+                    {p.name}
+                    <span className="ml-3 hidden text-[14px] font-normal text-dim lg:inline">
+                      {p.tagline}
+                    </span>
                   </span>
-                </span>
-                <span className="t-mono hidden text-dim sm:block">{p.context}</span>
-                <span className="t-mono hidden text-dim sm:block">{p.year}</span>
-                <span className="text-blue opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  →
-                </span>
-              </Link>
-            </Reveal>
-          ))}
+                  <span className="t-mono hidden text-dim sm:block">{p.context}</span>
+                  <span className="t-mono hidden text-dim sm:block">{p.year}</span>
+                  <span className="flex items-center gap-4 justify-self-end">
+                    {live && (
+                      <a
+                        href={live.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative z-10 whitespace-nowrap border border-blue/30 px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.12em] text-blue transition-colors duration-200 hover:bg-blue hover:text-paper"
+                      >
+                        {live.label} ↗
+                      </a>
+                    )}
+                    <span className="text-blue opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      →
+                    </span>
+                  </span>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
 
         <Reveal delay={0.15}>
