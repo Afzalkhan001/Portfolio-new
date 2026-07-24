@@ -50,11 +50,18 @@ export default function Connect() {
 
       {/* channels */}
       <div className="mt-16 border-t border-paper/15">
-        {profile.socials.map((s, i) => (
+        {[
+          ...profile.socials,
+          { label: "Résumé", href: profile.resume, handle: "PDF — download" },
+        ].map((s, i) => (
           <Reveal key={s.label} delay={i * 0.06}>
             <a
               href={s.href}
-              target={s.href.startsWith("http") ? "_blank" : undefined}
+              target={
+                s.href.startsWith("http") || s.href.endsWith(".pdf")
+                  ? "_blank"
+                  : undefined
+              }
               rel="noopener noreferrer"
               className="group grid grid-cols-[48px_1fr_auto] items-baseline gap-4 border-b border-paper/15 py-6 transition-colors duration-300 hover:bg-ink-soft sm:grid-cols-[64px_200px_1fr_auto] sm:gap-8 sm:px-3"
             >

@@ -79,6 +79,15 @@ export default function Nav() {
               </Link>
             );
           })}
+          <a
+            href="/Afzal_Khan_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 border border-ink px-3 py-1.5 text-[13px] font-medium text-ink transition-colors duration-300 hover:bg-ink hover:text-paper"
+          >
+            Résumé
+            <span className="text-[11px]">↗</span>
+          </a>
         </nav>
       </div>
     </motion.header>
